@@ -1,4 +1,6 @@
-﻿namespace UOM.Domain.Tests.Unit.TestUtils
+﻿using UOM.Domain.Models.UnitOfMeasures;
+
+namespace UOM.Domain.Tests.Unit.TestUtils
 {
     internal static class BaseUnitOfMeasureFactory
     {

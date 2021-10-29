@@ -1,4 +1,4 @@
-﻿namespace UOM.Domain
+﻿namespace UOM.Domain.Models.Dimensions
 {
     public class Dimension
     {

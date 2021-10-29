@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using UOM.Domain.Models.UnitOfMeasures;
 using UOM.Domain.Tests.Unit.TestUtils;
 using Xunit;
 
