@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System;
 using UOM.Domain.Models.Dimensions;
 
 namespace UOM.Persistence.EF.Repositories
@@ -7,7 +9,11 @@ namespace UOM.Persistence.EF.Repositories
     {
         public int NextId()
         {
-            return new Random().Next(1, 10000000);
+            using var context = new UomContext();
+            var p = new SqlParameter("@result", System.Data.SqlDbType.Int);
+            p.Direction = System.Data.ParameterDirection.Output;
+            context.Database.ExecuteSqlRaw("set @result = next value for dimension_seq", p);
+            return (int)p.Value;
         }
 
         public void Add(Dimension dimension)
@@ -15,6 +21,12 @@ namespace UOM.Persistence.EF.Repositories
             using var context = new UomContext();
             context.Dimensions.Add(dimension);
             context.SaveChanges();
+        }
+
+        public Dimension GetById(long id)
+        {
+            using var context = new UomContext();
+            return context.Dimensions.Find(id);
         }
     }
 }
