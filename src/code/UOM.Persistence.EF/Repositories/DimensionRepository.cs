@@ -7,26 +7,31 @@ namespace UOM.Persistence.EF.Repositories
 {
     public class DimensionRepository : IDimensionRepository
     {
+        private readonly UomContext _context;
+
+        public DimensionRepository(UomContext uomContext)
+        {
+            _context = uomContext;
+        }
         public int NextId()
         {
-            using var context = new UomContext();
-            var p = new SqlParameter("@result", System.Data.SqlDbType.Int);
-            p.Direction = System.Data.ParameterDirection.Output;
-            context.Database.ExecuteSqlRaw("set @result = next value for dimension_seq", p);
-            return (int)p.Value;
+            return 1; 
+            //using var context = new UomContext();
+            //var p = new SqlParameter("@result", System.Data.SqlDbType.Int);
+            //p.Direction = System.Data.ParameterDirection.Output;
+            //context.Database.ExecuteSqlRaw("set @result = next value for dimension_seq", p);
+            //return (int)p.Value;
         }
 
         public void Add(Dimension dimension)
         {
-            using var context = new UomContext();
-            context.Dimensions.Add(dimension);
-            context.SaveChanges();
+            _context.Dimensions.Add(dimension);
+            _context.SaveChanges();
         }
 
         public Dimension GetById(long id)
         {
-            using var context = new UomContext();
-            return context.Dimensions.Find(id);
+            return _context.Dimensions.Find(id);
         }
     }
 }

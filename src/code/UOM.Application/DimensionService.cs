@@ -2,7 +2,7 @@
 
 namespace UOM.Application
 {
-    public class DimensionService
+    public class DimensionService : IDimensionService
     {
         private readonly IDimensionRepository _dimensionRepository;
 
