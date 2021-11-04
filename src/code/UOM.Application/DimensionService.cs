@@ -1,4 +1,6 @@
-﻿using UOM.Domain.Models.Dimensions;
+﻿using System.Collections.Generic;
+using UOM.Application.Contracts;
+using UOM.Domain.Models.Dimensions;
 
 namespace UOM.Application
 {
@@ -11,11 +13,28 @@ namespace UOM.Application
             _dimensionRepository = dimensionRepository;
         }
 
-        public void DefineDimension(DefineDimensionDto dto)
+        public long DefineDimension(DefineDimensionDto dto)
         {
             var id = _dimensionRepository.NextId();
             var dimension = new Dimension(id, dto.Name, dto.Symbol);
             _dimensionRepository.Add(dimension);
+            return id;
+        }
+
+        public List<DimensionDto> GetAllDimensions()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DimensionDto GetById(long id)
+        {
+            var dimension = _dimensionRepository.GetById(id);
+            return new DimensionDto
+            {
+                Id = dimension.Id,
+                Name = dimension.Name,
+                Symbol = dimension.Symbol,
+            };
         }
     }
 

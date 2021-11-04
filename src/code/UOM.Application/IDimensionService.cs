@@ -1,7 +1,12 @@
-﻿namespace UOM.Application
+﻿using System.Collections.Generic;
+using UOM.Application.Contracts;
+
+namespace UOM.Application
 {
     public interface IDimensionService
     {
-        void DefineDimension(DefineDimensionDto dto);
+        long DefineDimension(DefineDimensionDto dto);
+        List<DimensionDto> GetAllDimensions();
+        DimensionDto GetById(long id);
     }
 }

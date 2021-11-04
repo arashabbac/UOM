@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UOM.Application;
+using UOM.Application.Contracts;
 
 namespace UOM.RestApi.Controllers
 {
@@ -14,10 +15,18 @@ namespace UOM.RestApi.Controllers
             _dimensionService = dimensionService;
         }
 
+        [HttpPost]
         public IActionResult Post(DefineDimensionDto dto)
         {
-            _dimensionService.DefineDimension(dto);
-            return Ok();
+            var dimensionId =_dimensionService.DefineDimension(dto);
+            return Ok(dimensionId);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<DimensionDto> Get(long id)
+        {
+            var dimension = _dimensionService.GetById(id);
+            return Ok(dimension);
         }
     }
 }

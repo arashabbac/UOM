@@ -3,10 +3,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UOM.Application;
+using UOM.Domain.Models.Dimensions;
+using UOM.Persistence.EF;
+using UOM.Persistence.EF.Repositories;
 
 namespace UOM.RestApi
 {
@@ -22,7 +27,16 @@ namespace UOM.RestApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddDbContext<UomContext>();
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UOM.RestApi", Version = "v1" });
+            });
+
+            services.AddScoped<IDimensionRepository, DimensionRepository>();
+            services.AddScoped<IDimensionService, DimensionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,10 +45,8 @@ namespace UOM.RestApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UOM.RestApi v1"));
             }
 
             app.UseStaticFiles();
@@ -45,7 +57,7 @@ namespace UOM.RestApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
