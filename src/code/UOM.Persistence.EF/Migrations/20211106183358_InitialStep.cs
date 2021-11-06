@@ -2,7 +2,7 @@
 
 namespace UOM.Persistence.EF.Migrations
 {
-    public partial class DimensionStep : Migration
+    public partial class InitialStep : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,7 +10,8 @@ namespace UOM.Persistence.EF.Migrations
                 name: "Dimensions",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Symbol = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

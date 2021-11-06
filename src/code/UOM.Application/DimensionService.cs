@@ -15,10 +15,9 @@ namespace UOM.Application
 
         public long DefineDimension(DefineDimensionDto dto)
         {
-            var id = _dimensionRepository.NextId();
-            var dimension = new Dimension(id, dto.Name, dto.Symbol);
+            var dimension = new Dimension(dto.Name, dto.Symbol);
             _dimensionRepository.Add(dimension);
-            return id;
+            return dimension.Id;
         }
 
         public List<DimensionDto> GetAllDimensions()

@@ -20,13 +20,13 @@ namespace UOM.Application.Tests.Integration
                 Symbol = "m",
             };
 
-            var expected = new Dimension(1, "Mass", "m");
+            var expected = new Dimension("Mass", "m");
 
-            service.DefineDimension(dto);
+            var id =service.DefineDimension(dto);
 
             DetachAllEntities();
-            var actual = repository.GetById(1);
-            actual.Should().BeEquivalentTo(expected);
+            var actual = repository.GetById(id);
+            actual.Should().BeEquivalentTo(expected , a=> a.Excluding(z => z.Id));
         }
     }
 }

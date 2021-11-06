@@ -3,6 +3,7 @@
 	As a procurement manager
 	I want to be able to define measurement dimensions
 
+@API-Level
 Scenario: Defining dimension
 	Given I have entered as a procurement manager
 	When I define the following dimension

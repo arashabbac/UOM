@@ -11,7 +11,7 @@ namespace UOM.Persistence.EF.Mapping
             builder.ToTable("Dimensions");
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Id)
-                .ValueGeneratedNever();
+                .ValueGeneratedOnAdd();
         }
     }
 }

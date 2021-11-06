@@ -12,7 +12,6 @@ namespace UOM.Application.Tests.Unit
         public void Save_A_Dimension_Into_Database()
         {
             var repository = Substitute.For<IDimensionRepository>();
-            repository.NextId().Returns(1);
             var service = new DimensionService(repository);
             var dto = new DefineDimensionDto
             {
@@ -20,7 +19,7 @@ namespace UOM.Application.Tests.Unit
                 Symbol = "m",
             };
 
-            var expected = new Dimension(1, "Mass", "m");
+            var expected = new Dimension("Mass", "m");
 
             service.DefineDimension(dto);
 

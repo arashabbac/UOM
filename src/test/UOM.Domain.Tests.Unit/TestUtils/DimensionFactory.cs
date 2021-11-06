@@ -6,7 +6,7 @@ namespace UOM.Domain.Tests.Unit.TestUtils
     {
         public static Dimension CreateMassDimension()
         {
-            return new Dimension(1,"Mass", "m");
+            return new Dimension("Mass", "m");
         }
 
     }
