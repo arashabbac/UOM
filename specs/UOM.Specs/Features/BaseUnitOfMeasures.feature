@@ -8,7 +8,7 @@ Scenario: Defining a base unit of measure
 	When I define the folowwing unit of measure
 	| Name | Symbol |
 	| Gram | gr     |
-	And assing it to 'Mass' dimension
+	And assign it to 'Mass' dimension
 	Then 'Gram' is the base unit of measure of 'Mass'
 
 Scenario: Defining more than one base unit of measure for a dimension

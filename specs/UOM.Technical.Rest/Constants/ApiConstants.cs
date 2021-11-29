@@ -1,4 +1,4 @@
-﻿namespace UOM.Specs.Constants
+﻿namespace UOM.Technical.Rest.Constants
 {
     public static class ApiConstants
     {

@@ -1,4 +1,4 @@
-﻿namespace UOM.Specs.Constants
+﻿namespace UOM.Specs.Shared.Constants
 {
     public static class Keys
     {

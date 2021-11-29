@@ -1,5 +1,6 @@
 ﻿using Suzianna.Core.Screenplay;
-using UOM.Specs.Models;
+using UOM.Specs.Shared.Models;
+using UOM.Specs.Shared.Tasks;
 
 namespace UOM.Specs.Screenplay.Tasks
 {
@@ -7,7 +8,7 @@ namespace UOM.Specs.Screenplay.Tasks
     {
         public static ITask Dimension(MeasurmentDimension dimension)
         {
-            return new DefineDimension(dimension);
+            return Factory.CreateTask<DefineDimension>(dimension);
         }
     }
 }

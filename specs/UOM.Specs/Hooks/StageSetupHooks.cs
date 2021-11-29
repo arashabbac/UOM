@@ -3,7 +3,7 @@ using Suzianna.Core.Screenplay;
 using Suzianna.Rest.Screenplay.Abilities;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
-using UOM.Specs.Constants;
+using UOM.Technical.Rest.Constants;
 
 namespace UOM.Specs.Hooks
 {

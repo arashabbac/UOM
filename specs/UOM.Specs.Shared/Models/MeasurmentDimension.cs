@@ -1,4 +1,4 @@
-﻿namespace UOM.Specs.Models
+﻿namespace UOM.Specs.Shared.Models
 {
     public class MeasurmentDimension
     {

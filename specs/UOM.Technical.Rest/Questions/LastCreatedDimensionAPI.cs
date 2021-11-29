@@ -2,16 +2,16 @@
 using Suzianna.Core.Screenplay.Questions;
 using Suzianna.Rest.Screenplay.Interactions;
 using Suzianna.Rest.Screenplay.Questions;
-using UOM.Specs.Constants;
-using UOM.Specs.Models;
+using UOM.Specs.Shared.Constants;
+using UOM.Specs.Shared.Models;
+using UOM.Specs.Shared.Questions;
 
-namespace UOM.Specs.Screenplay.Questions
+namespace UOM.Technical.Rest.Questions
 {
-    public class LastCreatedDimension : IQuestion<MeasurmentDimension>
+    public class LastCreatedDimensionAPI : LastCreatedDimension
     {
-        public MeasurmentDimension AnsweredBy(Actor actor)
+        protected override MeasurmentDimension Execute<T>(long id, T actor)
         {
-            var id = actor.Recall<long>(Keys.Dimensions.DimensionId);
             actor.AttemptsTo(Get.ResourceAt($"Dimensions/{id}"));
             return actor.AsksFor(LastResponse.Content<MeasurmentDimension>());
         }
