@@ -8,11 +8,11 @@ using UOM.Technical.Rest.Constants;
 namespace UOM.Specs.Hooks
 {
     [Binding]
-    public class StageSetupHooks
+    public class StageSetupAPIHook
     {
         private readonly IObjectContainer _container;
 
-        public StageSetupHooks(IObjectContainer container)
+        public StageSetupAPIHook(IObjectContainer container)
         {
             _container = container;
         }
