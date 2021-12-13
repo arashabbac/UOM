@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="dotnetseleniumextras.waithelpers" Version="3.11.0" />
     <PackageReference Include="selenium.webdriver" Version="4.1.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="96.0.4664.4500" />
   </ItemGroup>
