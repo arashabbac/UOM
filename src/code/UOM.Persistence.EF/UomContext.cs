@@ -7,11 +7,7 @@ namespace UOM.Persistence.EF
     {
         public DbSet<Dimension> Dimensions { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("data source=.;initial catalog=UOM-DB;Integrated security=true");
-            base.OnConfiguring(optionsBuilder);
-        }
+        public UomContext(DbContextOptions options): base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

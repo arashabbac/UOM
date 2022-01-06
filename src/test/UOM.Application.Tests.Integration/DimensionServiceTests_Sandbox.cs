@@ -1,5 +1,6 @@
 using FluentAssertions;
 using System.Transactions;
+using UOM.Application.Tests.Integration.TestUtils;
 using UOM.Domain.Models.Dimensions;
 using UOM.Persistence.EF;
 using UOM.Persistence.EF.Repositories;
@@ -7,7 +8,7 @@ using Xunit;
 
 namespace UOM.Application.Tests.Integration
 {
-    public class DimensionServiceTests : PersistTest<UomContext>
+    public class DimensionServiceTests_Sandbox : SandboxPersistTest
     {
         [Fact]
         public void Save_A_Dimension_Into_Database()
@@ -24,7 +25,7 @@ namespace UOM.Application.Tests.Integration
 
             var id =service.DefineDimension(dto);
 
-            DetachAllEntities();
+            Context.DetachAllEntities();
             var actual = repository.GetById(id);
             actual.Should().BeEquivalentTo(expected , a=> a.Excluding(z => z.Id));
         }
